@@ -1,0 +1,267 @@
+<!-- Include jQuery for Demonstration purposes -->
+<script type="text/javascript" src="https://monkeyquest.online/assets/vendor/jquery/jquery.min.js"></script>
+
+
+<!--
+    Modal HTML -- Should be placed in .body-container class above .div-header
+-->
+<div id="termsModal" class="modal-agreement">
+  <div class="modal-agreement__dialog" role="document">
+    <div class="modal-agreement__content">
+      <div class="modal-agreement__header">
+        <h5 class="modal-agreement__title">Welcome to BSGOPS!</h5>
+      </div>
+      <div class="modal-agreement__body">
+        <h4 class="modal-agreement__body-title">Access Agreement</h4>
+        <p class="modal-agreement__body-desc">Before entering, please be aware that Battlestar Galactica Online Private Server is a fan made restoration of BigPoint and NBC Univeral's Battlestar Galactica Online, made using the original client. We are not, and do not claim to be, proprietors of Battlestar Galactica Online.</p>
+        <p class="modal-agreement__body-desc"><strong>By using and continuing to use Battlestar Galactica Online Private Server's website, game, and other official platforms/services (ultimately referred to as "BSGOPS"), you agree BSGOPS is in no way affiliated with NBC Universal ("NBC") or BigPoint GmbH ("BigPoint") and/or its subsidiaries. You also agree that any agents or employees of BigPoint and/or NBC are not to be held liable in the event of any loss or damage arisen out of your use of, or inability to access or use, BSGOPS.
+          </strong></p>
+      </div>
+      <div class="modal-agreement__footer">
+        <div class="modal-agreement__row">
+          <div class="modal-agreement__col">
+            <div class="modal-agreement__footer-btn-ctn">
+              <button class="modal-agreement__footer-btn" onclick="agreeOnClick()">
+                Agree
+              </button>
+              <button class="modal-agreement__footer-btn" onclick="cancelOnClick()">
+                Cancel
+              </button>
+            </div>
+            <p class="modal-agreement__footer-note">By selecting "Agree" you certify that you've accepted the terms above and wish to continue.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!--
+    Modal CSS -- Should go in the <head> tag or linked as separate style sheet.
+-->
+<style type="text/css">
+@font-face {
+  src: url(https://bsgops-cdn.ozyne.net/assets/external/get/?id=bsgo&asset=font&filename=default) format('truetype');
+  font-family: 'Battlestar';
+}
+
+@font-face {
+  src: url(https://bsgops-cdn.ozyne.net/assets/external/get/?id=bsgo&asset=font&filename=default2) format('truetype');
+  font-family: 'BattlestarHard';
+}
+
+.modal-agreement {
+  position: fixed;
+  top: 0;
+  left: 0;
+  z-index: 1050;
+  width: 100%;
+  height: 100%;
+  overflow: auto;
+  outline: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+}
+
+.modal-agreement__dialog {
+  position: relative;
+  width: auto;
+  margin: .5rem;
+  pointer-events: none;
+  user-select: none;
+}
+
+.modal-agreement__content {
+  position: relative;
+  display: flex;
+  display: -ms-flexbox;
+  -ms-flex-direction: column;
+  flex-direction: column;
+  width: 100%;
+  pointer-events: auto;
+  background-clip: padding-box;
+  border-radius: 35px;
+  border: 10px solid transparent;
+  border-image: url(https://bsgops-cdn.ozyne.net/assets/external/get/?id=bsgo&asset=image&filename=bsgo-border-ol);
+  border-image-width: 40px;
+  outline: 0;
+  border-image-slice: 39;
+  background: #080808;
+}
+
+.modal-agreement__header {
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-align: start;
+  align-items: flex-start;
+  -ms-flex-pack: justify;
+  justify-content: space-between;
+  padding: 1rem 1rem;
+  /* border-bottom: */
+  border-top-left-radius: calc(.3rem - 1px);
+  border-top-right-radius: calc(.3rem - 1px);
+}
+
+.modal-agreement__title {
+  font-family: 'Battlestar';
+  margin-bottom: 0;
+  margin-top: 0;
+  line-height: 1.5;
+  /* Center text with ml-auto and mr-auto */
+  margin-left: auto;
+  margin-right: auto;
+  font-size: 1.25rem;
+  font-weight: 500;
+  color: #fff;
+  background: linear-gradient(90deg, rgba(31, 92, 121, 1) 15%, rgba(121, 31, 31, 1) 100%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.modal-agreement__body {
+  position: relative;
+  flex: 1 1 auto;
+  padding: 1rem;
+}
+
+.modal-agreement__body-title {
+  color: #fff;
+  font-family: 'Battlestar';
+  font-size: 1.5rem;
+  margin-bottom: .5rem;
+  margin-top: 0;
+  font-weight: 500;
+  line-height: 1.2;
+  text-align: center;
+}
+
+.modal-agreement__body-desc {
+  text-align: center;
+  color: #fff;
+}
+
+.modal-agreement__footer {
+  margin-left: 0;
+  margin-right: 0;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+  -ms-flex-align: center;
+  align-items: center;
+  -ms-flex-pack: end;
+  justify-content: flex-end;
+  padding: .75rem;
+  border-top: 1px solid #dee2e6;
+  border-bottom-right-radius: calc(.3rem - 1px);
+  border-bottom-left-radius: calc(.3rem - 1px);
+}
+
+.modal-agreement__row {
+  margin: .25rem;
+  width: 100%;
+  display: flex;
+  -ms-flex-wrap: wrap;
+  flex-wrap: wrap;
+}
+
+.modal-agreement__col {
+  -ms-flex-preferred-size: 0;
+  flex-basis: 0;
+  -ms-flex-positive: 1;
+  flex-grow: 1;
+  max-width: 100%;
+  position: relative;
+  width: 100%;
+  padding-right: 15px;
+  padding-left: 15px;
+}
+
+.modal-agreement__footer-btn-ctn {
+  text-align: center;
+  margin-top: 15px;
+  font-family: 'Battlestar';
+  text-transform: uppercase;
+  margin-bottom: 1rem;
+}
+
+.modal-agreement__footer-btn {
+  width: 113px;
+  height: 30px;
+  background: url(https://bsgops-cdn.ozyne.net/assets/external/get/?id=bsgo&asset=image&filename=bsgo-btn);
+  background-repeat: no-repeat;
+  background-size: contain;
+  background-position: center center;
+  font-family: 'BattlestarHard';
+  color: #fff;
+  border: none;
+}
+
+.modal-agreement__footer-btn:hover {
+  background: url(https://bsgops-cdn.ozyne.net/assets/external/get/?id=bsgo&asset=image&filename=bsgo-btn-hover);
+  color: #000;
+  cursor: pointer;
+}
+
+.modal-agreement__footer-note {
+  color: #fff;
+  text-align: center;
+  margin-top: 30px;
+}
+
+@media (max-width: 575px) {
+  .modal-agreement__dialog {
+    max-width: 475px;
+    margin: 1rem auto;
+  }
+
+  .modal-agreement__content {
+    width: calc(100% - 20px);
+  }
+}
+
+@media (min-width: 576px) {
+  .modal-agreement__dialog {
+    max-width: 500px;
+    margin: 1.75rem auto;
+  }
+}
+</style>
+
+<!--
+    Modal Javascript -- Used to display the modal to a user once provided they have cookies enabled.
+    Script should be placed at the bottom of the document, preferably with the footer if using PHP include statements.
+    * This can obviously be changed to suite your needs
+-->
+<script type="text/javascript">
+// JQuery dependency
+
+window.onload = function() {
+  if (localStorage.getItem("termsAgreement") != "true") {
+    $("#termsModal").show();
+    // Disables body scrolling
+    $("body").css({
+      "overflow": "hidden"
+    });
+    $(".modal-agreement").css({
+      "overflow": "auto"
+    });
+  }
+}
+
+function agreeOnClick() {
+  localStorage.setItem("termsAgreement", "true");
+  // Enables body scrolling
+  $("body").css({
+    "overflow": "unset"
+  });
+  $(".modal-agreement").css({
+    "overflow": "hidden"
+  });
+  $("#termsModal").fadeOut(1000).hide();
+}
+
+function cancelOnClick() {
+  window.location.href = "https://bigpoint.com/";
+}
+</script>
