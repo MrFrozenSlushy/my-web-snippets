@@ -1,5 +1,5 @@
 <!-- Include jQuery for Demonstration purposes -->
-<script type="text/javascript" src="https://monkeyquest.online/assets/vendor/jquery/jquery.min.js"></script>
+<script type="text/javascript" src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
 
 
 <!--
@@ -237,7 +237,7 @@
 <script type="text/javascript">
 // JQuery dependency
 
-window.onload = function() {
+$(document).ready(function() {
   if (localStorage.getItem("termsAgreement") != "true") {
     $("#termsModal").show();
     // Disables body scrolling
@@ -248,7 +248,7 @@ window.onload = function() {
       "overflow": "auto"
     });
   }
-}
+});
 
 function agreeOnClick() {
   localStorage.setItem("termsAgreement", "true");
